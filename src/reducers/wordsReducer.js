@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
 // }
 
 
-if (action.type === 'UPDATE_SEARCH_TERM') {
-  return {...state, searchTerm: action.payload}
-};
+// if (action.type === 'UPDATE_SEARCH_TERM') {
+//   return {...state, searchTerm: action.payload}
+// };
 

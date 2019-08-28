@@ -5,12 +5,14 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import SearchWords from '../containers/SearchWords';
 
 export default function App() {
   return (
     <Router>
+      <SearchWords />
       <Switch>
-        <Route path="/" component={TopWords} />
+        <Route exact path="/" component={TopWords} />
         <Route path="/words/:count" component={TopWords} />
       </Switch>
     </Router>
