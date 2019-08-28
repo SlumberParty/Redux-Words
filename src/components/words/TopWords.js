@@ -2,28 +2,35 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getWords, getFirstWords } from '../../selectors/wordsSelectors';
 import PropTypes from 'prop-types';
+import { UPDATE_SEARCH_TERM, updateSearchTerm } from '../../actions/wordsActions';
 
 class TopWords extends PureComponent {
   static propTypes = {
-    words: PropTypes.array.isRequired
+    words: PropTypes.array.isRequired,
+    setSearchTerm: PropTypes.func.isRequired
   }
 
   render() {
     return ( 
       <h1>im dying</h1>
+      //update to display words that match searchTerm
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   words: getWords(state),
-  getFirstWords: getFirstWords(state)
+  getFirstWords: getFirstWords(state, props.match.params.count)
 });
 
-//put in a map dispatch to props and use the searchterm in it
-//call an action, like set search term
+const mapDispatchToProps = (dispatch) => ({
+  setSearchTerm(searchTerm) {
+    dispatch(updateSearchTerm(searchTerm));
+  }
+});
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(TopWords);
  
